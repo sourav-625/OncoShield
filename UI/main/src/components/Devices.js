@@ -3,7 +3,7 @@ import React from "react";
 const Device = () => {
     return (
         <div className="container">
-            <div className="card" style="width:400px">
+            <div className="card" style={{width:"400px"}}>
                 <img className="card-img-top" src="img_avatar1.png" alt="Card image" />
                     <div className="card-body">
                         <h4 className="card-title">Electrodes</h4>
@@ -11,7 +11,7 @@ const Device = () => {
                         <a href="#" className="btn btn-primary">See details</a>
                     </div>
             </div>
-            <div className="card" style="width:400px">
+            <div className="card" style={{width:"400px"}}>
                 <img className="card-img-top" src="img_avatar1.png" alt="Card image" />
                     <div className="card-body">
                         <h4 className="card-title">ESP32-C6</h4>

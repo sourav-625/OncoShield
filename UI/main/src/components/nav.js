@@ -5,15 +5,6 @@ const Nav = () => {
     return (
         <nav className="navbar navbar-expand-lg bg-body-tertiary">
 
-            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
-                rel="stylesheet"
-                integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
-                crossorigin="anonymous" />
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-                crossorigin="anonymous">
-            </script>
-
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">Navbar</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -22,10 +13,26 @@ const Nav = () => {
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <a className="nav-link active" aria-current="page" href="/">Home</a>
+                        <Link
+                                to="/"
+                                className="nav-link"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                Home
+                            </Link>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/About">About</a>
+                        <Link
+                                to="/About"
+                                className="nav-link"
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                About
+                            </Link>
                         </li>
                         <li className="nav-item dropdown">
                             <Link
@@ -38,8 +45,8 @@ const Nav = () => {
                                 Devices
                             </Link>
                             <ul className="dropdown-menu">
-                                <li><a className="dropdown-item" href="#">Electrodes</a></li>
-                                <li><a className="dropdown-item" href="#">ESP32-C6</a></li>
+                                <li><Link className='nav-link' to="/">Electrodes</Link></li>
+                                <li><Link className='nav-link' to="/">Electrodes</Link></li>
                                 <li><hr className="dropdown-divider" /></li>
                                 <li><a className="dropdown-item" href="#">Something else here</a></li>
                             </ul>

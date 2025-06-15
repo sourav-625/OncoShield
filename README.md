@@ -1,6 +1,6 @@
 # 🛡️ OncoShield – Non-Invasive Tumor Detection System
 
-OncoShield is a non-invasive, AI-based cancer screening system that integrates **Thermography**, **Near-Infrared Spectroscopy (NIR)**, and **Electrical Impedance Spectroscopy (EIS)** to provide early-stage cancer risk detection. It uses a hybrid machine learning model and is built with a modern web interface to make early diagnosis more accessible, affordable, and scalable.
+OncoShield is a non-invasive, AI-based Tumor Detection System that integrates **Thermography**, **Near-Infrared Spectroscopy (NIR)**, and **Electrical Impedance Spectroscopy (EIS)** to provide early-stage Tumor  detection. It uses a hybrid machine learning model and is built with a modern web interface to make early diagnosis more accessible, affordable, and scalable.
 
 ---
 
@@ -42,8 +42,8 @@ OncoShield is a non-invasive, AI-based cancer screening system that integrates *
 CNN Model                     LSTM Model
 ↓ ↓                               ↓ ↓
 →→→→→→→→→→→ Ensemble Learning →→→→→→→→→→→→
-               ↓
-Final Cancer Risk Prediction
+                   ↓
+            Final Prediction
 
 ## 💻 Getting Started
 

@@ -37,6 +37,7 @@ OncoShield is a non-invasive, AI-based Tumor Detection System that integrates **
 ---
 
 ## 🧬 ML Model Pipeline *(currently icludes core components - expansions planned)*
+```text
 [ NIR/Infrared Image ]      [ EIS Time-Series ]
 ↓ ↓                               ↓ ↓
 CNN Model                     LSTM Model
@@ -44,6 +45,7 @@ CNN Model                     LSTM Model
 →→→→→→→→→→→ Ensemble Learning →→→→→→→→→→→→
                    ↓
             Final Prediction
+```
 
 ## 💻 Getting Started
 

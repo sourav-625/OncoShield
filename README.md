@@ -65,6 +65,7 @@ npm start
 ```
 
 ## Project Structure
+```plaintext
 OncoShield/
 ├── frontend/           # React app
 │   ├── public/
@@ -76,6 +77,7 @@ OncoShield/
 ├── ml-model/           # (Planned: ML model & training code)
 ├── assets/             # Images, icons, logos
 └── README.md
+```
 
 ## 🤝 Contributing
 Contributions are welcome!

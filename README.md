@@ -88,3 +88,10 @@ Contributions are welcome!
 Developer: Sourav Pati
 📧 Email: [k0259.mpsbls@gamil.com](k0259.mpsbls@gmail.com)
 🌐 GitHub: [sourav-625](https://github.com/sourav-625)
+
+
+> **Disclaimer:**  
+> This project is intended solely for **educational and research purposes**.  
+> It has **not been reviewed, tested, or approved by any certified medical professionals or regulatory bodies**.  
+> The system is **not intended for clinical diagnosis** and should **not be used to make medical decisions**.  
+> Additionally, the current model may **not be capable of detecting all tumor types** or conditions, especially deep internal tumors or cancers.

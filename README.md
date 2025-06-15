@@ -8,7 +8,7 @@ OncoShield is a non-invasive, AI-based cancer screening system that integrates *
 
 - 🌡️ Combines multiple non-invasive sensing technologies (Thermal, NIR, EIS)
 - 🤖 AI-based prediction using CNN and LSTM
-- 💻 Frontend built with **React.js** for real-time interaction
+- 💻 Frontend built with **React.js** for real-time interaction (under development)
 - 📊 Time-windowed analysis for greater diagnostic accuracy
 - ☁️ Backend and cloud-hosted ML model (planned)
 

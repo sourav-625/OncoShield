@@ -69,15 +69,16 @@ npm start
 ## Project Structure
 ```plaintext
 OncoShield/
-├── frontend/           # React app
+├── frontend/           # React app (soon to be updated)
 │   ├── public/
+        ├── assets/     # Images, icons, logos
+        ├── index.html
 │   ├── src/
 │   │   ├── components/
 │   │   ├── pages/
 │   │   └── App.js
-├── backend/            # (Planned: Node/Express API)
-├── ml-model/           # (Planned: ML model & training code)
-├── assets/             # Images, icons, logos
+├── backend/            # (coming soon: Node/Express API)
+├── ml-model/           # (current: ML model & training code)
 └── README.md
 ```
 

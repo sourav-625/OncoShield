@@ -51,7 +51,7 @@ CNN Model                     LSTM Model
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/OncoShield.git
+git clone https://github.com/sourav-625/OncoShield.git
 cd OncoShield
 ```
 

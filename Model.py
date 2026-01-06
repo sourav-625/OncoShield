@@ -6,6 +6,7 @@ from tensorflow.keras.utils import to_categorical
 from sklearn.model_selection import train_test_split
 import cv2
 import matplotlib.pyplot as plt
+from . import requests
 
 # Parameters
 num_samples = 1000  # Simulated sample count

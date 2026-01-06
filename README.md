@@ -14,29 +14,7 @@ OncoShield is a non-invasive, AI-based Tumor Detection System that integrates **
 
 ---
 
-## 🧠 Technologies Used
-
-### 🔷 Frontend *(in development)*
-- React.js
-- JavaScript (ES6+)
-- TailwindCSS / Material UI (optional)
-- Axios (for API calls)
-- Git & GitHub
-
-### 🔶 Backend *(in development)*
-- Node.js + Express.js for API development
-- MongoDB or Firebase for database
-- Cloud-hosted ML inference (Flask/TensorFlow Serving API)
-- Authentication and user management
-
-### ⚙️ Machine Learning Model *(Recently Integrated)*
-- CNN for image-based thermography & NIR input
-- LSTM for sequential EIS signal data
-- Ensemble Learning for final classification
-
----
-
-## 🧬 ML Model Pipeline *(currently icludes core components - expansions planned)*
+## 🧬 ML Model Pipeline *(currently icludes core components)*
 ```text
 [ NIR/Infrared Image ]      [ EIS Time-Series ]
 ↓ ↓                               ↓ ↓
@@ -45,41 +23,6 @@ CNN Model                     LSTM Model
 →→→→→→→→→→→ Ensemble Learning →→→→→→→→→→→→
                    ↓
             Final Prediction
-```
-
-## 💻 Getting Started
-
-### 1. Clone the Repository
-```bash
-git clone https://github.com/sourav-625/OncoShield.git
-cd OncoShield
-```
-
-### 2. Install Dependencies
-```bash
-cd frontend
-npm install
-```
-
-### 3. Run the App
-```bash
-npm start
-```
-
-## Project Structure
-```plaintext
-OncoShield/
-├── frontend/           # React app (soon to be updated)
-│   ├── public/
-        ├── assets/     # Images, icons, logos
-        ├── index.html
-│   ├── src/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   └── App.js
-├── backend/            # (coming soon: Node/Express API)
-├── ml-model/           # (current: ML model & training code)
-└── README.md
 ```
 
 ## 🤝 Contributing

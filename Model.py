@@ -21,7 +21,7 @@ NUM_CLASSES = 2
 EPOCHS = 10
 BATCH_SIZE = 32
 MODEL_DIR = "saved_models"
-MODEL_NAME = "oncoshield_ensemble"
+MODEL_NAME = "oncoshield_ensemble.keras"
 MODEL_PATH = os.path.join(MODEL_DIR, MODEL_NAME)
 
 os.makedirs(MODEL_DIR, exist_ok=True)

@@ -1,110 +1,131 @@
 import streamlit as st
 import numpy as np
-import pandas as pd
 import matplotlib.pyplot as plt
+
+# Import ONLY inference-related functions
+from Model import predict_oncoshield, load_oncoshield_model
 
 # -------------------------
 # Page Config
 # -------------------------
 st.set_page_config(
-    page_title="OncoShield – Tumor Risk Analysis",
+    page_title="OncoShield – Risk Analysis",
     layout="wide"
 )
 
-st.title("🛡️ OncoShield: Tumor Detection & Risk Assessment")
-st.markdown("Multimodal Biosignal Analysis using EIS, NIRS & Thermography")
+st.title("🛡️ OncoShield: Multimodal Abnormality Detection")
+st.caption("Thermography + Bio-Impedance | Ensemble CNN–LSTM Model")
 
 st.divider()
 
 # -------------------------
-# Sidebar Inputs (Dummy)
+# Load Model Once
 # -------------------------
-st.sidebar.header("🧑 Patient Information")
+@st.cache_resource
+def load_model():
+    return load_oncoshield_model()
 
-patient_id = st.sidebar.text_input("Patient ID", "OS-1029")
-age = st.sidebar.slider("Age", 18, 90, 45)
-gender = st.sidebar.selectbox("Gender", ["Male", "Female", "Other"])
-scan_date = st.sidebar.date_input("Scan Date")
-
-st.sidebar.divider()
-st.sidebar.header("⚙️ Model Info")
-st.sidebar.write("Ensemble Model:")
-st.sidebar.write("- LSTM (Temporal signals)")
-st.sidebar.write("- RNN (Sequential patterns)")
+model = load_model()
 
 # -------------------------
-# Dummy Model Outputs
+# Sidebar – Input Controls
 # -------------------------
-tumor_detected = True
-risk_score = 0.72  # 0–1 scale
-growth_rate = 1.8  # mm/month (dummy)
+st.sidebar.header("🔬 Scan Controls")
 
-# -------------------------
-# Detection Result Section
-# -------------------------
-st.subheader("🔍 Detection Result")
+use_dummy = st.sidebar.checkbox("Use Dummy Input", value=True)
 
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    if tumor_detected:
-        st.success("✅ Tumor Detected")
-    else:
-        st.success("❌ No Tumor Detected")
-
-with col2:
-    st.metric("Risk Score", f"{risk_score*100:.1f} %")
-
-with col3:
-    st.metric("Estimated Growth Rate", f"{growth_rate} mm/month")
-
-st.divider()
-
-# -------------------------
-# Tumor Growth Trend (Dummy)
-# -------------------------
-st.subheader("📈 Tumor Growth Trend (Simulated)")
-
-time = np.arange(1, 7)
-tumor_size = np.array([8, 8.6, 9.4, 10.2, 11.1, 12.0])  # mm
-
-fig1, ax1 = plt.subplots()
-ax1.plot(time, tumor_size, marker='o')
-ax1.set_xlabel("Time (Months)")
-ax1.set_ylabel("Tumor Size (mm)")
-ax1.set_title("Estimated Tumor Growth Over Time")
-st.pyplot(fig1)
-
-# -------------------------
-# Signal Contribution Pie Chart
-# -------------------------
-st.subheader("🧬 Signal Contribution Analysis")
-
-labels = ["EIS", "NIRS", "Thermography"]
-values = [40, 35, 25]  # dummy contribution %
-
-fig2, ax2 = plt.subplots()
-ax2.pie(values, labels=labels, autopct="%1.1f%%", startangle=90)
-ax2.set_title("Contribution of Biosignals")
-st.pyplot(fig2)
-
-# -------------------------
-# Risk Interpretation
-# -------------------------
-st.subheader("⚠️ Risk Interpretation")
-
-if risk_score < 0.3:
-    st.info("Low risk – routine monitoring advised.")
-elif 0.3 <= risk_score < 0.6:
-    st.warning("Moderate risk – follow-up recommended.")
+if use_dummy:
+    thermal_image = np.random.rand(64, 64, 3).astype(np.float32)
+    bio_series = np.random.rand(50, 10).astype(np.float32)
 else:
-    st.error("High risk – immediate clinical evaluation advised.")
+    st.sidebar.warning("Real input upload not implemented yet.")
+    thermal_image = np.random.rand(64, 64, 3).astype(np.float32)
+    bio_series = np.random.rand(50, 10).astype(np.float32)
 
 # -------------------------
-# Disclaimer
+# Run Inference
 # -------------------------
-st.divider()
-st.caption(
-    "⚠️ This system performs abnormality detection and risk assessment only. "
-    "It is not a diagnostic tool."
-)
+if st.button("🚀 Run OncoShield Analysis"):
+
+    result = predict_oncoshield(
+        thermal_image=thermal_image,
+        bioimpedance_series=bio_series
+    )
+
+    # -------------------------
+    # Result Overview
+    # -------------------------
+    st.subheader("🔍 Detection Result")
+
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        if result["class_index"] == 1:
+            st.error(result["prediction"])
+        else:
+            st.success(result["prediction"])
+
+    with col2:
+        st.metric(
+            "Model Confidence",
+            f"{result['confidence'] * 100:.2f}%"
+        )
+
+    with col3:
+        st.metric(
+            "Predicted Class Index",
+            result["class_index"]
+        )
+
+    st.divider()
+
+    # -------------------------
+    # Raw Softmax Scores
+    # -------------------------
+    st.subheader("🧠 Model Output Scores")
+    st.json(result["raw_scores"])
+
+    # -------------------------
+    # Dummy Tumor Growth Curve
+    # -------------------------
+    st.subheader("📈 Estimated Growth Trend (Simulated)")
+
+    months = np.arange(1, 7)
+    growth = np.cumsum(np.random.uniform(0.5, 1.2, size=6)) + 6
+
+    fig1, ax1 = plt.subplots()
+    ax1.plot(months, growth, marker="o")
+    ax1.set_xlabel("Time (Months)")
+    ax1.set_ylabel("Estimated Size (mm)")
+    ax1.set_title("Tumor Growth Projection")
+    st.pyplot(fig1)
+
+    # -------------------------
+    # Dummy Modality Contribution
+    # -------------------------
+    st.subheader("🧬 Modality Contribution (Simulated)")
+
+    labels = ["Thermal/NIR CNN", "Bio-Impedance LSTM"]
+    values = [55, 45]
+
+    fig2, ax2 = plt.subplots()
+    ax2.pie(values, labels=labels, autopct="%1.1f%%", startangle=90)
+    ax2.set_title("Ensemble Contribution")
+    st.pyplot(fig2)
+
+    # -------------------------
+    # Interpretation Layer
+    # -------------------------
+    st.subheader("⚠️ Risk Interpretation")
+
+    if result["confidence"] < 0.4:
+        st.info("Low risk signal – routine monitoring suggested.")
+    elif result["confidence"] < 0.7:
+        st.warning("Moderate risk signal – follow-up recommended.")
+    else:
+        st.error("High risk signal – clinical evaluation advised.")
+
+    st.caption(
+        "⚠️ This system performs abnormality detection and risk estimation only. "
+        "It is not a diagnostic tool."
+    )
